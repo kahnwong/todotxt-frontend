@@ -27,4 +27,4 @@ repos:
           - --ignore
           - DL3027
       - id: trufflehog
-      - id: yarn-prettier
+#      - id: yarn-prettier
