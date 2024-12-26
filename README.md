@@ -1,3 +1,43 @@
-# todotxt-frontend
+# todo.txt Frontend (todotxt-frontend)
 
-Theme is based on <https://codesandbox.io/p/sandbox/todo-list-using-html-css-and-js-8kew0>
+A frontend to display todo.txt content for today filter
+
+## Install the dependencies
+
+```bash
+yarn
+# or
+npm install
+```
+
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
+
+```bash
+quasar dev
+```
+
+### Lint the files
+
+```bash
+yarn lint
+# or
+npm run lint
+```
+
+### Format the files
+
+```bash
+yarn format
+# or
+npm run format
+```
+
+### Build the app for production
+
+```bash
+quasar build
+```
+
+### Customize the configuration
+
+See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).

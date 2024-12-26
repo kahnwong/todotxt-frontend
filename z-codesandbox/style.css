@@ -1,6 +1,6 @@
 body {
   background: #352f5b;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 23px;
 }
 
@@ -8,8 +8,8 @@ body {
   max-width: 400px;
 }
 
-input[type="text"],
-input[type="text"]:focus {
+input[type='text'],
+input[type='text']:focus {
   color: #fff;
   border: none;
   background: rgba(0, 0, 0, 0.2);
