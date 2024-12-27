@@ -13480,27 +13480,14 @@
                      meta="[object Object]">
                     <div class="q-list q-list--bordered q-list--separator" role="list">
                         <!--start items-->
-                        <!---- item 1 ---->
+                        {{range .Items}}
                         <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
                              role="listitem" tabindex="0">
                             <div class="q-focus-helper" tabindex="-1"></div>
-                            <div class="q-item__section column q-item__section--main justify-center">Single line item
+                            <div class="q-item__section column q-item__section--main justify-center">{{.}}
                             </div>
                         </div>
-                        <!---- item 2 ---->
-                        <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
-                             role="listitem" tabindex="0">
-                            <div class="q-focus-helper" tabindex="-1"></div>
-                            <div class="q-item__section column q-item__section--main justify-center">Single line item
-                            </div>
-                        </div>
-                        <!---- item 3 ---->
-                        <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
-                             role="listitem" tabindex="0">
-                            <div class="q-focus-helper" tabindex="-1"></div>
-                            <div class="q-item__section column q-item__section--main justify-center">Single line item
-                            </div>
-                        </div>
+                        {{end}}
                         <!--end items-->
                     </div>
                 </div>
