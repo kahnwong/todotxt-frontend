@@ -18,7 +18,18 @@ func getTodos() []string {
 		tasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterDueToday, todo.FilterOverdue)
 		_ = tasks.Sort(todo.SortPriorityAsc, todo.SortProjectAsc)
 		for _, t := range tasks {
-			todos = append(todos, t.Todo)
+			var context string
+			if len(t.Contexts) > 0 {
+				context = fmt.Sprintf("@%s", t.Contexts[0])
+			}
+
+			var project string
+			if len(t.Projects) > 0 {
+				project = fmt.Sprintf("+%s", t.Projects[0])
+			}
+
+			todoStr := fmt.Sprintf("%s %s %s", context, project, t.Todo)
+			todos = append(todos, todoStr)
 		}
 	}
 
