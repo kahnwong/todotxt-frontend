@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	todo "github.com/1set/todotxt"
 	"github.com/gofiber/fiber/v2"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func getTodos() []string {
-	//return []string{"a", "b", "c", "d"}
-
 	var todos []string
 
-	if tasklist, err := todo.LoadFromPath("/opt/syncthing/cloud/Apps/todotxt/todo.txt"); err != nil {
+	if tasklist, err := todo.LoadFromPath(os.Getenv("TODO_PATH")); err != nil {
 		fmt.Print("Error reading todo.txt")
 	} else {
 		tasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterDueToday, todo.FilterOverdue)
@@ -48,7 +48,7 @@ func main() {
 	})
 
 	// start server
-	err := app.Listen("127.0.0.1:3000")
+	err := app.Listen(os.Getenv("LISTEN_ADDR"))
 	if err != nil {
 		fmt.Println("Error starting server", err)
 	}

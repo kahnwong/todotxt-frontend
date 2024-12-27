@@ -35,3 +35,6 @@ yarn-error.log*
 # golang
 tmp
 todotxt-frontend
+
+# env
+.env
