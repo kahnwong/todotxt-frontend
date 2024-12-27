@@ -17,34 +17,50 @@ type Todo struct {
 	Todo    string
 }
 
-func getTodos() []Todo {
+func parseTodos(tasks todo.TaskList) []Todo {
 	var todos []Todo
+
+	for _, t := range tasks {
+		// context
+		var context string
+		if len(t.Contexts) > 0 {
+			context = fmt.Sprintf("@%s", t.Contexts[0])
+		}
+
+		// project
+		var project string
+		if len(t.Projects) > 0 {
+			project = fmt.Sprintf("+%s", t.Projects[0])
+		}
+
+		// append
+		todos = append(todos, Todo{
+			context, project,
+			t.Todo})
+	}
+
+	return todos
+}
+
+func getTodos() ([]Todo, []Todo) {
+	var todayTodos []Todo
+	var tinkeringTodos []Todo
 
 	if tasklist, err := todo.LoadFromPath(os.Getenv("TODO_PATH")); err != nil {
 		fmt.Print("Error reading todo.txt")
 	} else {
-		tasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterDueToday, todo.FilterOverdue)
-		_ = tasks.Sort(todo.SortPriorityAsc, todo.SortProjectAsc)
-		for _, t := range tasks {
-			// context
-			var context string
-			if len(t.Contexts) > 0 {
-				context = fmt.Sprintf("@%s", t.Contexts[0])
-			}
+		// today
+		todayTasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterDueToday, todo.FilterOverdue)
+		_ = todayTasks.Sort(todo.SortPriorityAsc, todo.SortProjectAsc)
+		todayTodos = parseTodos(todayTasks)
 
-			// project
-			var project string
-			if len(t.Projects) > 0 {
-				project = fmt.Sprintf("+%s", t.Projects[0])
-			}
+		// tinkering
+		tinkeringTasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterByContext("tinkering"))
+		_ = tinkeringTasks.Sort(todo.SortPriorityAsc, todo.SortProjectAsc)
+		tinkeringTodos = parseTodos(tinkeringTasks)
 
-			// append
-			todos = append(todos, Todo{
-				context, project,
-				t.Todo})
-		}
 	}
-	return todos
+	return todayTodos, tinkeringTodos
 }
 
 func main() {
@@ -54,6 +70,9 @@ func main() {
 	// render site
 	app.Static("/assets", "./static/assets")
 	app.Get("/", func(c *fiber.Ctx) error {
+		// parse todos
+		todayTodos, tinkeringTodos := getTodos()
+
 		// init template
 		tmpl, err := template.ParseFiles("./static/index.gohtml")
 		if err != nil {
@@ -62,7 +81,10 @@ func main() {
 
 		// render template
 		var tpl bytes.Buffer
-		err = tmpl.Execute(&tpl, getTodos())
+		err = tmpl.Execute(&tpl, map[string][]Todo{
+			"today":     todayTodos,
+			"tinkering": tinkeringTodos,
+		})
 		if err != nil {
 			fmt.Println("Error rendering html:", err)
 		}

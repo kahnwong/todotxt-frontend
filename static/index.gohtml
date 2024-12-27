@@ -13488,14 +13488,15 @@
             </div>
             <div class="q-layout__shadow absolute-full overflow-hidden no-pointer-events"></div><!----></header>
         <div class="q-page-container" style="padding-top: 50px;">
-            <main class="q-page row justify-evenly" style="min-height: 852px;">
+            <main class="q-page row justify-evenly" style="min-height: 500px;">
+                <!--manual loop; everything is same except input objects: `.today` or `.tinkering`-->
                 <div class="q-pa-md" style="max-width: 500px;" title="Example component" active=""
                      todos="[object Object],[object Object],[object Object],[object Object],[object Object]"
                      meta="[object Object]">
                     <br><br>
                     <div class="q-list q-list--bordered q-list--separator" role="list">
                         <!--start items-->
-                        {{range .}}
+                        {{range .today}}
                         <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
                              role="listitem" tabindex="0">
                             <div class="q-focus-helper" tabindex="-1"></div>
@@ -13511,7 +13512,31 @@
                         <!--end items-->
                     </div>
                 </div>
+                <div class="q-pa-md" style="max-width: 500px;" title="Example component" active=""
+                     todos="[object Object],[object Object],[object Object],[object Object],[object Object]"
+                     meta="[object Object]">
+                    <br><br>
+                    <div class="q-list q-list--bordered q-list--separator" role="list">
+                        <!--start items-->
+                        {{range .tinkering}}
+                            <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
+                                 role="listitem" tabindex="0">
+                                <div class="q-focus-helper" tabindex="-1"></div>
+                                <div class="q-item__section column q-item__section--main justify-center">
+                                    <p>
+                                        <span class="todo-context">{{ .Context }}</span>
+                                        <span class="todo-project">{{ .Project }}</span>
+                                        <span> {{ .Todo }} </span>
+                                    </p>
+                                </div>
+                            </div>
+                        {{end}}
+                        <!--end items-->
+                    </div>
+                </div>
+                <!--end manual loop-->
             </main>
+
         </div>
     </div>
 </div>
