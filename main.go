@@ -41,6 +41,7 @@ func main() {
 	app := fiber.New()
 
 	// render site
+	app.Static("/assets", "./static/assets")
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("./static/index.html", fiber.Map{
 			"Items": getTodos()})

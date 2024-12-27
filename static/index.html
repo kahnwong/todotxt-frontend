@@ -60,12 +60,12 @@
     }
     </style>
     <style type="text/css"
-           data-vite-dev-id="/Users/kahnwong/Git/kahnwong/fleet/todotxt-frontend/resources/quasar/node_modules/@quasar/extras/material-icons/material-icons.css">@font-face {
+           data-vite-dev-id="./assets/material-icons.css">@font-face {
         font-family: 'Material Icons';
         font-style: normal;
         font-weight: 400;
         font-display: block;
-        src: url('/node_modules/@quasar/extras/material-icons/web-font/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2') format('woff2'), url('/node_modules/@quasar/extras/material-icons/web-font/flUhRq6tzZclQEJ-Vdg-IuiaDsNa.woff') format('woff');
+        src: url('./assets/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2') format('woff2'), url('./assets/flUhRq6tzZclQEJ-Vdg-IuiaDsNa.woff') format('woff');
     }
 
     .material-icons {
@@ -13470,7 +13470,12 @@
     <div class="q-layout q-layout--standard" style="min-height: 902px;" tabindex="-1"><!----><!---->
         <header class="q-header q-layout__section--marginal fixed-top">
             <div class="q-toolbar row no-wrap items-center" role="toolbar">
-                <div class="q-toolbar__title ellipsis"> todo.txt Frontend</div>
+                <div class="q-toolbar__title ellipsis"> todo.txt</div>
+                <button onclick="window.location.reload();" class="q-btn q-btn-item non-selectable no-outline q-btn--flat q-btn--round q-btn--actionable q-focusable q-hoverable q-btn--dense"
+                        tabindex="0" type="button"><span class="q-focus-helper"></span><span
+                        class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i
+                        class="q-icon notranslate material-icons" aria-hidden="true" role="img">refresh</i></span>
+                </button>
             </div>
             <div class="q-layout__shadow absolute-full overflow-hidden no-pointer-events"></div><!----></header>
         <div class="q-page-container" style="padding-top: 50px;">
