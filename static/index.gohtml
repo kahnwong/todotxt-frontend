@@ -13486,11 +13486,11 @@
                     <br><br>
                     <div class="q-list q-list--bordered q-list--separator" role="list">
                         <!--start items-->
-                        {{range .Items}}
+                        {{range .}}
                         <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
                              role="listitem" tabindex="0">
                             <div class="q-focus-helper" tabindex="-1"></div>
-                            <div class="q-item__section column q-item__section--main justify-center">{{.}}
+                            <div class="q-item__section column q-item__section--main justify-center">{{ .Context }} {{ .Project }} {{ .Todo }}
                             </div>
                         </div>
                         {{end}}
