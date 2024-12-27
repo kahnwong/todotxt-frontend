@@ -47,7 +47,7 @@ func main() {
 	})
 
 	// start server
-	err := app.Listen(":3000")
+	err := app.Listen("127.0.0.1:3000")
 	if err != nil {
 		fmt.Println("Error starting server", err)
 	}
