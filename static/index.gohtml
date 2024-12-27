@@ -13466,6 +13466,14 @@
         left: 0;
         height: 2px;
     }</style>
+<style type="text/css">
+    span.todo-context {
+        color: #4FA1AC;
+    }
+    span.todo-project {
+        color: #C8AA6F;
+    }
+</style>
 <div id="q-app" data-v-app="">
     <div class="q-layout q-layout--standard" style="min-height: 902px;" tabindex="-1"><!----><!---->
         <header class="q-header q-layout__section--marginal fixed-top">
@@ -13490,7 +13498,12 @@
                         <div class="q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-focusable q-hoverable"
                              role="listitem" tabindex="0">
                             <div class="q-focus-helper" tabindex="-1"></div>
-                            <div class="q-item__section column q-item__section--main justify-center">{{ .Context }} {{ .Project }} {{ .Todo }}
+                            <div class="q-item__section column q-item__section--main justify-center">
+                                <p>
+                                    <span class="todo-context">{{ .Context }}</span>
+                                    <span class="todo-project">{{ .Project }}</span>
+                                    <span> {{ .Todo }} </span>
+                                </p>
                             </div>
                         </div>
                         {{end}}
