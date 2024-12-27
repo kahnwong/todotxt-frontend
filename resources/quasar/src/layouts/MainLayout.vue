@@ -2,7 +2,8 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title> todo.txt Frontend </q-toolbar-title>
+        <q-toolbar-title> todo.txt </q-toolbar-title>
+        <q-btn flat @click="refreshPage" round dense icon="refresh" />
       </q-toolbar>
     </q-header>
 
@@ -12,4 +13,8 @@
   </q-layout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const refreshPage = () => {
+  location.reload() // Reloads the current page
+}
+</script>
