@@ -47,7 +47,7 @@ func getTodos() ([]Todo, []Todo) {
 	var tinkeringTodos []Todo
 
 	if tasklist, err := todo.LoadFromPath(os.Getenv("TODO_PATH")); err != nil {
-		fmt.Print("Error reading todo.txt")
+		fmt.Printf("Error reading todo.txt: %s", err)
 	} else {
 		// today
 		todayTasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterDueToday, todo.FilterOverdue)
