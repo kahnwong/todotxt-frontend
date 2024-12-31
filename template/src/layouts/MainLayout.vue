@@ -6,7 +6,6 @@
         <q-btn flat @click="refreshPage" round dense icon="refresh" />
       </q-toolbar>
     </q-header>
-
     <q-page-container>
       <router-view />
     </q-page-container>

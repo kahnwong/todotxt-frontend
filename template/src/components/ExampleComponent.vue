@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md" style="max-width: 350px">
+  <div class="q-pa-md" style="max-width: 400px">
     <q-list bordered separator>
       <q-item clickable v-ripple>
         <q-item-section>Single line item</q-item-section>

@@ -1,11 +1,24 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="row justify-evenly">
+    <div class="q-pa-md example-row-equal-width">
+      <div class="row">
+        <example-component
+          title="Example component"
+          active
+          :todos="todos"
+          :meta="meta"
+        ></example-component>
+      </div>
+
+      <div class="row">
+        <example-component
+          title="Example component"
+          active
+          :todos="todos"
+          :meta="meta"
+        ></example-component>
+      </div>
+    </div>
   </q-page>
 </template>
 
