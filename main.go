@@ -15,7 +15,7 @@ func main() {
 	app := fiber.New()
 
 	// render site
-	app.Static("/", "./template/dist/spa")
+	app.Static("/", "./frontend/dist/spa")
 	app.Get("/api/todo/today", todo.TodoTodayController)
 	app.Get("api/todo/tinkering", todo.TodoTinkeringController)
 
