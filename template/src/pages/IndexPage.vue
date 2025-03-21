@@ -9,7 +9,7 @@
           :meta="meta"
         ></example-component>
 
-        <p>{{ todosFromApi[0]['price'] }}</p>
+        <p>{{ todosFromApi }}</p>
       </div>
 
       <div class="row">
@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import type { Todo, Meta } from 'components/models'
+import type { Todo,  Meta } from 'components/models'
 import ExampleComponent from 'components/ExampleComponent.vue'
 import axios from 'axios'
 
@@ -61,7 +61,7 @@ const meta = ref<Meta>({
 const todosFromApi = ref(null)
 
 const fetchData = async () => {
-  const response = await axios.get('https://api.sampleapis.com/beers/ale')
+  const response = await axios.get('/api/todo/today')
   todosFromApi.value = response.data
 }
 

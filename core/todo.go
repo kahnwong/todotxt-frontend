@@ -8,9 +8,10 @@ import (
 )
 
 type Todo struct {
-	Context string
-	Project string
-	Todo    string
+	ID      int    `json:"id"`
+	Context string `json:"context"`
+	Project string `json:"project"`
+	Todo    string `json:"todo"`
 }
 
 func parseTodos(tasks todo.TaskList) []Todo {
@@ -31,7 +32,7 @@ func parseTodos(tasks todo.TaskList) []Todo {
 
 		// append
 		todos = append(todos, Todo{
-			context, project,
+			t.ID, context, project,
 			t.Todo})
 	}
 
