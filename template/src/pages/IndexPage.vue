@@ -5,20 +5,14 @@
         <example-component
           title="Example component"
           active
-          :todos="todos"
-          :meta="meta"
+          :todos="todosFromApi"
         ></example-component>
 
         <p>{{ todosFromApi }}</p>
       </div>
 
       <div class="row">
-        <example-component
-          title="Example component"
-          active
-          :todos="todos"
-          :meta="meta"
-        ></example-component>
+        <example-component title="Example component" active :todos="todos"></example-component>
       </div>
     </div>
   </q-page>
@@ -26,43 +20,31 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import type { Todo, Todo2, Meta } from 'components/models'
+import type { Todo } from 'components/models'
 import ExampleComponent from 'components/ExampleComponent.vue'
 import axios from 'axios'
 
 const todos = ref<Todo[]>([
   {
     id: 1,
-    content: 'ct1',
+    project: 'fo',
+    todo: 'bar',
+    context: 'ct1',
   },
   {
     id: 2,
-    content: 'ct2',
-  },
-  {
-    id: 3,
-    content: 'ct3',
-  },
-  {
-    id: 4,
-    content: 'ct4',
-  },
-  {
-    id: 5,
-    content: 'ct5',
+    project: 'fo',
+    todo: 'bar',
+    context: 'ct1',
   },
 ])
 
-const meta = ref<Meta>({
-  totalCount: 1200,
-})
-
 // api
-const todosFromApi = ref<Todo2[]>([])
+const todosFromApi = ref<Todo[]>([])
 
 const fetchData = async () => {
   const response = await axios.get('/api/todo/today')
-  todosFromApi.value = response.data as Todo2[]
+  todosFromApi.value = response.data as Todo[]
 }
 
 // Fetch data when component is mounted

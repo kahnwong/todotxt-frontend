@@ -1,19 +1,23 @@
 <template>
   <div class="q-pa-md" style="max-width: 400px">
     <q-list bordered separator>
-      <q-item clickable v-ripple>
-        <q-item-section>Single line item</q-item-section>
-      </q-item>
-
-      <q-item clickable v-ripple>
-        <q-item-section>Single line item</q-item-section>
-      </q-item>
-
-      <q-item clickable v-ripple>
-        <q-item-section>Single line item</q-item-section>
+      <q-item v-ripple v-for="todo in todos" :key="todo.id">
+        <q-item-section>
+          {{ todo.project }}
+          {{ todo.todo }}
+          ({{ todo.context }})
+        </q-item-section>
       </q-item>
     </q-list>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Todo } from 'components/models'
+
+export interface TodoProps {
+  todos: Todo[]
+}
+
+withDefaults(defineProps<TodoProps>(), {})
+</script>
