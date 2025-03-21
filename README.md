@@ -3,6 +3,8 @@
 ## Usage
 
 ```bash
+cd frontend && yarn install && yarn build
+
 docker build -t todotxt-frontend .
 docker run \
   -p 3000:3000 \
