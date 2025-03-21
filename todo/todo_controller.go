@@ -1,4 +1,4 @@
-package core
+package todo
 
 import (
 	"github.com/gofiber/fiber/v2"

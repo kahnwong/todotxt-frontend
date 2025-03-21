@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/kahnwong/todotxt-frontend/todo"
+
 	"github.com/gofiber/fiber/v2"
 	_ "github.com/joho/godotenv/autoload"
-	"github.com/kahnwong/todotxt-frontend/core"
 )
 
 func main() {
@@ -15,8 +16,8 @@ func main() {
 
 	// render site
 	app.Static("/", "./template/dist/spa")
-	app.Get("/api/todo/today", core.TodoTodayController)
-	app.Get("api/todo/tinkering", core.TodoTinkeringController)
+	app.Get("/api/todo/today", todo.TodoTodayController)
+	app.Get("api/todo/tinkering", todo.TodoTinkeringController)
 
 	// start server
 	err := app.Listen(os.Getenv("LISTEN_ADDR"))
