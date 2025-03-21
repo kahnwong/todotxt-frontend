@@ -3,9 +3,11 @@
     <q-list bordered separator>
       <q-item v-ripple v-for="todo in todos" :key="todo.id">
         <q-item-section>
-          {{ todo.project }}
-          {{ todo.todo }}
-          ({{ todo.context }})
+          <p>
+            <span class="todo-context">{{ todo.context }}</span>
+            <span class="todo-project">{{ todo.project }}</span>
+            <span> {{ todo.todo }} </span>
+          </p>
         </q-item-section>
       </q-item>
     </q-list>
