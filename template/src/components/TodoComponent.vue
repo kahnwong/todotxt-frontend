@@ -23,3 +23,12 @@ export interface TodoProps {
 
 withDefaults(defineProps<TodoProps>(), {})
 </script>
+
+<style>
+.todo-context {
+  color: #4fa1ac;
+}
+.todo-project {
+  color: #c8aa6f;
+}
+</style>
