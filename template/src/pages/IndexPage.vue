@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import type { Todo,  Meta } from 'components/models'
+import type { Todo, Todo2, Meta } from 'components/models'
 import ExampleComponent from 'components/ExampleComponent.vue'
 import axios from 'axios'
 
@@ -58,11 +58,11 @@ const meta = ref<Meta>({
 })
 
 // api
-const todosFromApi = ref(null)
+const todosFromApi = ref<Todo2[]>([])
 
 const fetchData = async () => {
   const response = await axios.get('/api/todo/today')
-  todosFromApi.value = response.data
+  todosFromApi.value = response.data as Todo2[]
 }
 
 // Fetch data when component is mounted
