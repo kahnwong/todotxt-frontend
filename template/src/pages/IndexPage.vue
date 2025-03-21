@@ -8,6 +8,8 @@
           :todos="todos"
           :meta="meta"
         ></example-component>
+
+        <p>{{ todosFromApi[0]['price'] }}</p>
       </div>
 
       <div class="row">
@@ -23,9 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import type { Todo, Meta } from 'components/models'
 import ExampleComponent from 'components/ExampleComponent.vue'
+import axios from 'axios'
 
 const todos = ref<Todo[]>([
   {
@@ -53,4 +56,15 @@ const todos = ref<Todo[]>([
 const meta = ref<Meta>({
   totalCount: 1200,
 })
+
+// api
+const todosFromApi = ref(null)
+
+const fetchData = async () => {
+  const response = await axios.get('https://api.sampleapis.com/beers/ale')
+  todosFromApi.value = response.data
+}
+
+// Fetch data when component is mounted
+onMounted(fetchData)
 </script>
