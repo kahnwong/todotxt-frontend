@@ -38,3 +38,6 @@ todotxt-frontend
 
 # env
 .env
+
+# data
+todotxt.txt

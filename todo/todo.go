@@ -2,10 +2,11 @@ package todo
 
 import (
 	"fmt"
-	"os"
 
 	todo "github.com/1set/todotxt"
 )
+
+var todotxtSanitizedPath = "/tmp/todo.txt"
 
 type Todo struct {
 	ID      int    `json:"id"`
@@ -32,8 +33,11 @@ func parseTodos(tasks todo.TaskList) []Todo {
 
 		// append
 		todos = append(todos, Todo{
-			t.ID, context, project,
-			t.Todo})
+			t.ID,
+			context,
+			project,
+			t.Todo,
+		})
 	}
 
 	return todos
@@ -42,7 +46,8 @@ func parseTodos(tasks todo.TaskList) []Todo {
 func getTodos(group string) []Todo {
 	var todos []Todo
 
-	if tasklist, err := todo.LoadFromPath(os.Getenv("TODO_PATH")); err != nil {
+	sanitizeTodo() // strip leading `https://` which results in the todo body returning null
+	if tasklist, err := todo.LoadFromPath(todotxtSanitizedPath); err != nil {
 		fmt.Printf("Error reading todo.txt: %s", err)
 	} else {
 		if group == "today" {
