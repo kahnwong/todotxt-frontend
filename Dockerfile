@@ -14,7 +14,7 @@ RUN CGO_ENABLED=0 go build -ldflags "-w -s" -o /todotxt-frontend
 FROM alpine:latest AS deploy
 
 # hadolint ignore=DL3045
-COPY frontend/dist/spa /frontend/dist/spa/
+COPY frontend/dist/pwa /frontend/dist/pwa/
 COPY --from=build /todotxt-frontend /
 
 EXPOSE 3000
