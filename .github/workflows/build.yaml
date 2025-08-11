@@ -18,7 +18,7 @@ jobs:
       contents: read
       attestations: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       # ---------- build frontend ----------
       - name: Setup node
         uses: actions/setup-node@v4
