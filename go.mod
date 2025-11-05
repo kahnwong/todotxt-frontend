@@ -1,6 +1,6 @@
 module github.com/kahnwong/todotxt-frontend
 
-go 1.24.2
+go 1.25
 
 require (
 	github.com/1set/todotxt v0.0.4
