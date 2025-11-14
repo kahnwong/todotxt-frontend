@@ -16,4 +16,10 @@
 const refreshPage = () => {
   location.reload() // Reloads the current page
 }
+
+// auto refresh
+const autoRefresh = document.createElement('meta')
+autoRefresh.setAttribute('http-equiv', 'refresh')
+autoRefresh.setAttribute('content', '60')
+document.head.appendChild(autoRefresh)
 </script>
