@@ -50,18 +50,16 @@ func getTodos(group string) []Todo {
 	if tasklist, err := todo.LoadFromPath(todotxtSanitizedPath); err != nil {
 		fmt.Printf("Error reading todo.txt: %s", err)
 	} else {
-		if group == "today" {
+		switch group {
+		case "today":
 			todayTasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterDueToday, todo.FilterOverdue)
 			_ = todayTasks.Sort(todo.SortPriorityAsc, todo.SortProjectAsc)
 			todos = parseTodos(todayTasks)
-
-		} else if group == "tinkering" {
+		case "tinkering":
 			tinkeringTasks := tasklist.Filter(todo.FilterNotCompleted).Filter(todo.FilterByContext("tinkering"))
 			_ = tinkeringTasks.Sort(todo.SortPriorityAsc, todo.SortProjectAsc)
 			todos = parseTodos(tinkeringTasks)
-
 		}
-
 	}
 	return todos
 }
