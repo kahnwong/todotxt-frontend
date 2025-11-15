@@ -1,4 +1,4 @@
-module github.com/kahnwong/todotxt-frontend
+module github.com/kahnwong/todotxt
 
 go 1.25
 

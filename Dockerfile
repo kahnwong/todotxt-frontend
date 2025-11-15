@@ -5,7 +5,7 @@ WORKDIR /build
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY todo ./todo
+COPY api ./api
 COPY *.go ./
 
 RUN CGO_ENABLED=0 go build -ldflags "-w -s" -o /todotxt-frontend
