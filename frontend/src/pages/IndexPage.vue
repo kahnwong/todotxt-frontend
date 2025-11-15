@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import type { Todo } from 'components/models'
 import TodoComponent from 'components/TodoComponent.vue'
 import axios from 'axios'
@@ -30,8 +30,27 @@ const fetchTodoTinkering = async () => {
   const response = await axios.get('/api/todo/tinkering')
   todoTinkering.value = response.data as Todo[]
 }
+//
+// onMounted(() => {
+//   fetchTodoToday()
+//   fetchTodoTinkering()
+// })
 
-// Fetch data when component is mounted
-onMounted(fetchTodoToday)
-onMounted(fetchTodoTinkering)
+let updateInterval: number | null = null
+const UPDATE_INTERVAL_MS = 10000
+onMounted(() => {
+  fetchTodoToday()
+  fetchTodoTinkering()
+
+  updateInterval = setInterval(() => {
+    fetchTodoToday()
+    fetchTodoTinkering()
+  }, UPDATE_INTERVAL_MS) as unknown as number
+})
+
+onUnmounted(() => {
+  if (updateInterval) {
+    clearInterval(updateInterval)
+  }
+})
 </script>

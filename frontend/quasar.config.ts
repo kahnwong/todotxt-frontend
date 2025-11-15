@@ -34,7 +34,10 @@ export default defineConfig((/* ctx */) => {
     build: {
       target: {
         browser: [
-          'es2022', 'firefox115', 'chrome115', 'safari14',
+          'es2022',
+          'firefox115',
+          'chrome115',
+          'safari14',
           // legacy devices
           'chrome74',
         ],

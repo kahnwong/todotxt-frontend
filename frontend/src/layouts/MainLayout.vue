@@ -3,7 +3,6 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title> todo.txt </q-toolbar-title>
-        <q-btn flat @click="refreshPage" round dense icon="refresh" />
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -12,14 +11,4 @@
   </q-layout>
 </template>
 
-<script setup lang="ts">
-const refreshPage = () => {
-  location.reload() // Reloads the current page
-}
-
-// auto refresh
-const autoRefresh = document.createElement('meta')
-autoRefresh.setAttribute('http-equiv', 'refresh')
-autoRefresh.setAttribute('content', '60')
-document.head.appendChild(autoRefresh)
-</script>
+<script setup lang="ts"></script>
