@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/kahnwong/todotxt-frontend/todo"
+	"github.com/kahnwong/todotxt/api"
 
 	"os"
 
@@ -17,8 +17,8 @@ func main() {
 
 	// render site
 	app.Static("/", "./frontend/dist/spa")
-	app.Get("/api/todo/today", todo.TodoTodayController)
-	app.Get("/api/todo/tinkering", todo.TodoTinkeringController)
+	app.Get("/api/todo/today", api.TodoTodayController)
+	app.Get("/api/todo/tinkering", api.TodoTinkeringController)
 
 	// start server
 	err := app.Listen(os.Getenv("LISTEN_ADDR"))
