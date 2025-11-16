@@ -8,14 +8,14 @@ RUN go mod download
 COPY api ./api
 COPY *.go ./
 
-RUN CGO_ENABLED=0 go build -ldflags "-w -s" -o /todotxt-frontend
+RUN CGO_ENABLED=0 go build -ldflags "-w -s" -o /todotxt
 
 # hadolint ignore=DL3007
 FROM alpine:latest AS deploy
 
 # hadolint ignore=DL3045
 COPY frontend/dist/spa /frontend/dist/spa/
-COPY --from=build /todotxt-frontend /
+COPY --from=build /todotxt /
 
 EXPOSE 3000
-CMD ["/todotxt-frontend"]
+CMD ["/todotxt"]

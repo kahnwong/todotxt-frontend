@@ -1,5 +1,5 @@
 {
-  "name": "todotxt-frontend",
+  "name": "todotxt",
   "version": "0.0.1",
   "description": "A frontend to display todo.txt content for today filter",
   "productName": "todo.txt Frontend",
