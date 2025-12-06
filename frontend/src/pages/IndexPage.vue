@@ -44,7 +44,7 @@ onMounted(() => {
 
   updateInterval = setInterval(() => {
     fetchTodoToday()
-    fetchTodoTinkering()
+    // fetchTodoTinkering() // updating both results in a gui glitch, prob race condition
   }, UPDATE_INTERVAL_MS) as unknown as number
 })
 
