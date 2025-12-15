@@ -1,10 +1,10 @@
 module github.com/kahnwong/todotxt
 
-go 1.25
+go 1.25.4
 
 require (
 	github.com/1set/todotxt v0.0.4
-	github.com/gofiber/fiber/v2 v2.52.9
+	github.com/gofiber/fiber/v2 v2.52.10
 	github.com/joho/godotenv v1.5.1
 )
 

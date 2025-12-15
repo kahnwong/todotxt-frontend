@@ -34,7 +34,7 @@ yarn-error.log*
 
 # golang
 tmp
-todotxt-frontend
+todotxt
 
 # env
 .env
